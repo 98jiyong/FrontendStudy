@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <style>
+    .red{
+      color: red;
+    }
+    .gray{
+      color: gray;
+    }
+    table {
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 15px;
+    }
+    td {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">회원가입</h1><hr>
+  <div style="text-align: right; padding-right: 110px; padding-bottom: 20px;">
+    <span class="red">*</span> 표시는 필수사항입니다.</div>
+  <form action="#" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="id">사용자 ID </label><span class="red">*</span>
+        </td>
+        <td>
+          <input type="text" name="id" id="id" required><span class="gray">
+            4~12자의 영문 대소문자와 숫자로만 입력
+          </span> 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="pwd">패스워드 </label><span class="red">*</span>
+        </td>
+        <td>
+          <input type="password" name="pwd" id="pwd" required><span class="gray">
+            4~12자의 영문 대소문자와 숫자로만 입력
+          </span> 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="pwdchk">패스워드 확인 </label><span class="red">*</span>
+        </td>
+        <td>
+          <input type="password" name="pwdchk" id="pwdchk" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="name">이름 </label><span class="red">*</span>
+        </td>
+        <td>
+          <input type="text" name="name" id="name" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="sex">성별 </label><span class="red">*</span>
+        </td>
+        <td>
+          <label for="men">남</label>
+          <input type="radio" name="sex" id="men"checked>
+          <label for="women">여</label>
+          <input type="radio" name="sex" id="women">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="email">이메일 </label><span class="red">*</span>
+        </td>
+        <td>
+          <input type="email" name="email" id="email" size="5" required>
+          <span>@</span>
+          <select name="email" id="email">
+            <option value="0" selected>선택</option>
+            <option value="1">naver.com</option>
+            <option value="2">gmail.com</option>
+            <option value="3">nate.com</option>
+          </select>
+          <span class="gray">Ex) id@domain.com</span> 
+        </td>          
+      </tr>
+      <tr>
+        <td>
+          <label for="tel">전화번호&nbsp;</label>
+        </td>
+        <td>
+          <select name="tel" id="tel">
+            <option value="010" selected>010</option>
+            <option value="016">016</option>
+            <option value="017">017</option>
+            <option value="018">018</option>
+          </select>
+          <input type="tel" name="tel" id="tel" size="13" placeholder="1234-1234">
+        </td>
+      </tr>
+      <tr>
+        <td>관심분야</td>
+        <td>
+            <input type="checkbox" name="computer">컴퓨터
+            <input type="checkbox" name="internet">인터넷
+            <input type="checkbox" name="travel">여행
+            <input type="checkbox" name="movie">영화감상
+            <input type="checkbox" name="music">음악감상
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">
+          <label for="intro">자기소개&nbsp;</label>
+        </td>
+        <td>
+          <textarea name="intro" id="intro" cols="70" rows="10" placeholder="간단한 자기소개 작성."></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <input type="submit" value="제출">
+          <input type="reset" value="취소">
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
