@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <style>
+    label, input, select { padding: 5px;}
+    ::placeholder {font-size: 16px;}
+  </style>
+</head>
+<body style="margin: 40px;">
+  <h2>HTML Forms</h2>
+  <form action="#" method="get">
+    <!--입력박스-->
+    <label for="uname">User name</label><br>
+    <input type="text" name="uname" id="uname"><br>
+
+    <label for="pwd">Password</label><br>
+    <input type="password" name="pwd" id="pwd"><br>
+    
+    <label for="tel">Phone</label><br>
+    <input type="tel" name="tel" id="tel"><br>
+
+    <label for="email">E-mail</label><br>
+    <input type="email" name="email" id="email"><br><br>
+    <!--라디오 버튼(중복체크X)-->
+    <input type="radio" id="html" name="fav_language" value="HTML" checked>
+    <label for="html">HTML</label><br>
+    <input type="radio" id="css" name="fav_language" value="CSS">
+    <label for="css">CSS</label><br>
+    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+    <label for="javascript">JavaScript</label><br><br>
+    <!--체크박스(중복체크O)-->
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" checked>
+    <label for="vehicle1"> I have a bike</label><br>
+    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
+    <label for="vehicle2"> I have a car</label><br>
+    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+    <label for="vehicle3"> I have a boat</label><br><br>
+    <!--콤보박스-->
+    <label for="fruits">favorite fruit</label><br>
+    <select name="fruits" id="fruits">
+      <option value="apple">apple</option>
+      <option value="grape">grape</option>
+      <option value="kiwi">kiwi</option>
+      <option value="banana">banana</option>
+      <option value="watermelon" selected>watermelon</option>
+    </select><br><br><br>
+    <!--텍스트구역-->
+    <label for="intro">Introduction</label><br>
+    <textarea name="intro" id="into" cols="50" rows="10" placeholder="Introduce yourself."></textarea><br><br>
+    <!--제출 및 초기화 버튼-->
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset"><br>
+  </form>
+</body>
+</html>
