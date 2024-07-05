@@ -46,12 +46,13 @@
 /* 내용 */
 .main {
   grid-area: main;
-  border: 2px solid red; 
+  /* border: 2px solid red;  */
   grid-row-start: 4;
   grid-row-end: 70;
   
   grid-column-start: 2;
-  grid-column-end: 5;  
+  grid-column-end: 5; 
+  margin-right: 100px; 
 }
 
 /* 로고 */
@@ -72,14 +73,15 @@
   grid-row-end: 70;
   
   grid-column-start: 1;
-  grid-column-end: 2;  
+  grid-column-end: 2;
+  margin-right: 100px;  
 }
 
 
 /* 푸터 */
 .footer {
   grid-area: footer;
-  border: 2px solid brown; 
+  /* border: 2px solid brown;  */
   grid-row-start: 70;
   grid-row-end: 80;
   
