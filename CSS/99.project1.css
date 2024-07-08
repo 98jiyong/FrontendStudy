@@ -41,7 +41,7 @@ li:active {
   padding-bottom: 10px;
 }
 .next {
-  display: flex; justify-content: space-between;
+  display: flex; justify-content: space-around;
 }
 
  /* 컨테이너 */
