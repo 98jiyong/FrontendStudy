@@ -13,5 +13,5 @@ if (hour < 12) {
 else {
   console.log(`오후 ${hour}시 ${min}분 입니다.`);  
 }
-console.log(`${today.getFullYear()}-0${today.getMonth()+1}-${today.getDate()}`);
+console.log(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
 console.log(`${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`);
