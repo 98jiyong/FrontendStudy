@@ -2,13 +2,14 @@
 
 let numStr = '';
 for (let i = 1; i <= 1000; i++)
-  numStr += 1;
+  numStr += i;
+console.log(numStr);
 
 let count1 = 0, count2 = 0;
 for (let i = 0; i < numStr.length; i++) {
     if (numStr[i] == '1')
         count1++;
-    if (numStr[i] == '2')
+    if (numStr[i] == '')
         count2++;
 }
 console.log(count1, count2);
