@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>속성조작</title>
+  <script>
+    window.onload = () => {
+      let image = document.querySelector('#image');
+      image.src = "https://picsum.photos/400/200";
+      image.alt = "random image.";
+      image.setAttribute('width', 600);
+      image.height = 300;
+
+      let width = image.getAttribute('width');
+      let height = image.height;
+      let info = `width: ${width}, height: ${height}`;
+      document.querySelector('h3').innerText = info;
+    }
+  </script>
+</head>
+<body style="margin: 40px;">
+  <img id ='image'>
+  <h3></h3>
+</body>
+</html>

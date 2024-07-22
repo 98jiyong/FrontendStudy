@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문서객체 선택</title>
+  <script>
+    function handler(){
+      // 첫번째 h1 태그의 배경색을 yellow로
+      document.querySelector('h1').style.backgroundColor = "yellow";
+
+      // 모든 h1 태그의 글자색을 red로
+      // 모든 태그를 바꾸려면 배열을 생성해서 반복문을 사용해야함
+      let h1Array = document.querySelectorAll('h1');
+      for(let h1 of h1Array){
+        h1.style.color = 'red';
+      }
+
+      // class가 header1인 요소의 배경색을 auqa로
+      let classH1Array = document.querySelectorAll('.header1');
+      for(let h1 of classH1Array){
+        h1.style.backgroundColor = 'aqua';
+      }
+      
+      let idH1Array = document.querySelectorAll('#header1');
+      for(let h1 of idH1Array){
+        h1.style.backgroundColor = 'lightgreen';
+      }
+
+      document.querySelector('#header1').innerHTML = "From Javascript";
+
+      document.body.style.fontSize = '2rem';
+    }
+  </script>
+</head>
+<body style="margin: 40px;">
+  <h1>Header No.1</h1>
+  <h1 class="header1">Header No.2</h1>
+  <h1 id="header1">Header No.3</h1>
+  <h1 class="header1" id="header1">Header No.4</h1>
+  <button onclick="handler()">실행</button>
+</body>
+</html>
