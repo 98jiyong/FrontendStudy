@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoFocus</title>
+  <style>
+    input, button {padding: 5px; margin: 5px;}
+  </style>
+  <script>
+    window.onload = () => {
+      const input1 = document.querySelector('#input1');
+      const input2 = document.querySelector('#input2');
+      const button = document.querySelector('button');
+      const result = document.querySelector('#result');
+
+      input1.onkeyup = () => {
+        if(input1.value.length >= 6)
+        input2.focus();
+      }
+      input2.onkeyup = (e) => {
+        // if(e.keyCode == 8 && input2.value.length == 0)
+        if(e.code === 'Backspace' && input2.value.length == 0)
+          input1.focus();
+        if(e.code === 'Enter' || e.code === 'NumpadEnter'){
+          let resultStr = `${input1.value}-${input2.value}`;
+          result.innerHTML = resultStr;
+        }
+      }
+      button.onclick = () => {
+        let resultStr = `${input1.value}-${input2.value}`;
+        result.innerHTML = resultStr;
+      }
+    }
+  </script>
+</head>
+<body style="margin: 40px;">
+  주민등록번호:
+  <input type="text" id="input1" maxlength="6" autofocus>
+  <span>-</span>
+  <input type="password" id="input2" maxlength="7">
+  <button>확인</button><hr>
+  <div id="result"></div>
+</body>
+</html>
