@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage</title>
+  <style>
+    input, button, div {padding: 5px; margin: 5px;}
+  </style>
+  <script>
+    window.onload = () => {
+      localStorage.setItem('fruit', '복숭아');
+      let fruit = localStorage.getItem('fruit');
+      document.querySelector('h1').innerHTML = fruit;
+
+      localStorage.setItem('object', JSON.stringify({name : '복숭아', price: 20000}));
+      let obj = JSON.parse(localStorage.getItem('object'));
+      console.log(obj);
+      const {name, price} = obj;
+      document.querySelector('#obj').innerHTML = `${name}: ${price}`;
+
+      let fruits = [
+      {name : '복숭아', price: 3000}, {name : '수박', price: 20000}];
+      localStorage.setItem('array',JSON.stringify(fruits));
+      let array = JSON.parse(localStorage.getItem('array'));
+      console.log(array);
+      let todoList = [
+      {key:0, name:'점심 먹기', flag:true},
+      {key:1, name:'수업 듣기', flag:false},
+      {key:2, name:'저녁 먹기', flag:false}
+      ];
+
+      localStorage.setItem('todoList', JSON.stringify(todoList));
+      let inputList = JSON.parse(localStorage.getItem('todoList'));
+      console.log(inputList);
+
+      const result = document.getElementById('result');
+      for (let todo of inputList){
+        const item = document.createElement('div');
+        const checkbox = document.createElement('input');
+        const text = document.createElement('span');
+        const button = document.createElement('button');
+
+        // item 객체 조작 후 todo-list에 매달기
+        item.setAttribute('data-key', todo.key);     // <div data-key = ""> 데이터리스트에 값 매기기
+        item.appendChild(checkbox);
+        item.appendChild(text);
+        item.appendChild(button);
+        result.appendChild(item);
+
+        checkbox.type = 'checkbox';
+        checkbox.addEventListener('change', (e) => {
+          item.style.textDecoration = e.target.checked ? 'line-through' : '';
+        });
+        if(todo.flag){
+          item.style.textDecoration = 'line-through';
+        }
+        checkbox.checked = todo.flag;
+
+        text.innerHTML = todo.name;
+        // 버튼 조작
+        button.innerText ='제거하기';
+        button.addEventListener('click', () => {
+          removeTodo(todo.key);
+        });
+
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1></h1>
+  <h1 id="obj"></h1>
+  <h1 id="arr"></h1>
+  <hr>
+  <div id="result"></div>
+</body>
+</html>
