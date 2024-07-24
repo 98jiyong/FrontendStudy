@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>디지털시계(그래픽 버전)</title>
   <style>
+    span { font-size: 70px; font-family: D2coding; }
     img { width: 100px;}
+    div > img { width: 50px;}
   </style>
   <script>
     function twoDigit(num) {
-            return num < 10 ? '0' + num : String(num);      // 4 --> '04', 15 --> '15'
+      return num < 10 ? '0' + num : String(num);      // 4 --> '04', 15 --> '15'
     }
     function myDate(now){
       const week = '일월화수목금토'.split('');
-      return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}-${week[now.getDay()]}`;
+      return `${twoDigit(now.getFullYear())}-${twoDigit(now.getMonth() + 1)}-${twoDigit(now.getDate())}-${week[now.getDay()]}`;
     }
     function myTime(now){
       return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
@@ -22,24 +24,41 @@
       setInterval(()=>{
         let now = new Date();
         let dateStr = myDate(now);
-        document.getElementById('date').innerHTML = dateStr;
         let timeStr = myTime(now);
-        let image1 = document.querySelector('#s2');
-        image1.src = `img/${timeStr[7]}.svg`;
-  
-        document.getElementById('h1').src = `img/${timeStr[0]}.svg`;
-        document.getElementById('h2').src = `img/${timeStr[1]}.svg`;
-        document.getElementById('m1').src = `img/${timeStr[3]}.svg`;
-        document.getElementById('m2').src = `img/${timeStr[4]}.svg`;
-        document.getElementById('s1').src = `img/${timeStr[6]}.svg`;
-        // document.getElementById('s2').src = `img/${timeStr[7]}.svg`;
+      
+        const dateIds = ['yy1', 'yy2', 'yy3', 'yy4', 'mm1', 'mm2', 'dd1', 'dd2'];
+        const dateValues = [dateStr[0], dateStr[1], dateStr[2], dateStr[3], dateStr[5], dateStr[6], dateStr[8], dateStr[9]];
+        const timeIds = ['h1', 'h2', 'm1', 'm2', 's1', 's2'];
+        const timeValues = [timeStr[0], timeStr[1], timeStr[3], timeStr[4], timeStr[6], timeStr[7]];
+
+        dateIds.forEach((id, index) => {
+          document.getElementById(id).src = `img/${dateValues[index]}.svg`;
+        });
+        document.querySelector('span').innerHTML = myDate(now)[11];
+
+        timeIds.forEach((id, index) => {
+          document.getElementById(id).src = `img/${timeValues[index]}.svg`;
+        });
       }, 1000);
-      }
+    }
   </script>
 </head>
 <body style="margin: 40px;">
-  <h1 id="date"></h1>
-  <hr>
+  <div>
+    <img id="yy1">
+    <img id="yy2">
+    <img id="yy3">
+    <img id="yy4">
+    <img src="img/Hyphen.png">
+    <img id="mm1">
+    <img id="mm2">
+    <img src="img/Hyphen.png">
+    <img id="dd1">
+    <img id="dd2">
+    <img src="img/Hyphen.png">
+    <span></span>
+    <hr>
+  </div>
   <img id="h1">
   <img id="h2">
   <img src="img/Colon.jpg">
@@ -48,6 +67,5 @@
   <img src="img/Colon.jpg">
   <img id="s1">
   <img id="s2">
-
 </body>
 </html>
