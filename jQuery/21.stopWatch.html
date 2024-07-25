@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스탑워치</title>
+  <style>
+    button { padding: 10px 20px;}
+    h1 {font-size: 65px;}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    let hour = 0, min = 0, sec = 0;
+    function twoDigit(num){
+      return num < 10? '0' + num : String(num);               // 4 --> '04', 15 --> '15'
+    }
+    function myClock(){
+      if(sec == 10){
+        min++;
+        sec = 0;
+      }
+      if(min == 60){
+        hour++;
+        min = 0;
+      }
+      return `${twoDigit(hour)}:${twoDigit(min)}.${(sec)}`;
+    }
+    $(document).ready(() => {
+      let si = null;
+  
+      $('#start').on('click',() => {
+        if(!si){
+          si = setInterval(() => {
+            sec++;
+          const timeStr = myClock();
+          $('#time').html(timeStr);
+        }, 100)
+        }
+      });
+  
+      $('#stop').on('click', () => {
+        clearInterval(si);
+        si = null;
+      });
+      
+      $('#reset').on('click', () => {
+        sec = 0, min = 0, hour = 0;
+        $('#time').html(`${twoDigit(hour)}:${twoDigit(min)}.${(sec)}`);
+      });
+  }) 
+  </script>
+</head>
+<body style="margin: 40px;">
+  <h1 id="time">00:00.0
+  </h1>
+  <button id="start">시작</button>
+  <button id="stop">정지</button>
+  <button id="reset">리셋</button>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디지털시계(그래픽 버전)</title>
+  <style>
+    span { font-size: 70px; font-family: D2coding; }
+    img { width: 100px;}
+    div > img { width: 50px;}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    function twoDigit(num) {
+      return num < 10 ? '0' + num : String(num);      // 4 --> '04', 15 --> '15'
+    }
+    function myDate(now){
+      const week = '일월화수목금토'.split('');
+      return `${twoDigit(now.getFullYear())}-${twoDigit(now.getMonth() + 1)}-${twoDigit(now.getDate())}-${week[now.getDay()]}`;
+    }
+    function myTime(now){
+      return `${twoDigit(now.getHours())}:${twoDigit(now.getMinutes())}:${twoDigit(now.getSeconds())}`;
+    }
+    $(document).ready(()=> {
+      setInterval(()=>{
+        let now = new Date();
+        let dateStr = myDate(now);
+        let timeStr = myTime(now);
+      
+        const dateIds = ['yy1', 'yy2', 'yy3', 'yy4', 'mm1', 'mm2', 'dd1', 'dd2'];
+        const dateValues = [dateStr[0], dateStr[1], dateStr[2], dateStr[3], dateStr[5], dateStr[6], dateStr[8], dateStr[9]];
+        const timeIds = ['h1', 'h2', 'm1', 'm2', 's1', 's2'];
+        const timeValues = [timeStr[0], timeStr[1], timeStr[3], timeStr[4], timeStr[6], timeStr[7]];
+
+        dateIds.forEach((id, index) => {
+          $(`#${id}`).attr('src', `../JS/ch07.DOM/img/${dateValues[index]}.svg`);
+        });
+        $('span').html(myDate(now)[11]);
+
+        timeIds.forEach((id, index) => {
+          $(`#${id}`).attr('src', `../JS/ch07.DOM/img/${timeValues[index]}.svg`);
+        });
+      }, 1000);
+      $('.hyphen').attr({src: '../JS/ch07.DOM/img/Hyphen.png'});          // id는 하나만 줄 수 있음
+      $('.colon').attr({src: '../JS/ch07.DOM/img/Colon.jpg'});          // 여러개를 주고 싶을땐 class 사용
+    });
+  </script>
+</head>
+<body style="margin: 40px;">
+  <div>
+    <img id="yy1">
+    <img id="yy2">
+    <img id="yy3">
+    <img id="yy4">
+    <img class="hyphen">
+    <img id="mm1">
+    <img id="mm2">
+    <img class="hyphen">
+    <img id="dd1">
+    <img id="dd2">
+    <img class="hyphen">
+    <span></span>
+    <hr>
+  </div>
+  <img id="h1">
+  <img id="h2">
+  <img class="colon">
+  <img id="m1">
+  <img id="m2">
+  <img class="colon">
+  <img id="s1">
+  <img id="s2">
+</body>
+</html>
