@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>내가 좋아하는 음식</title>
+    <style>
+       * { font-family: 'Noto Sans KR', sans-serif; }
+        .container {
+            display: flex;
+            gap: 20px; /* 이미지를 일정 간격으로 띄우고 싶다면 사용 */
+            flex-wrap: wrap; /* 화면이 좁아질 경우 줄 바꿈을 허용 */
+        }
+        .item {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+  <h1>좋아하는 음식</h1><br><hr>
+  <div>
+    <!-- Carousel -->
+    <div id="demo3" class="carousel slide" data-bs-ride="carousel">
+
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo3" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo3" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo3" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#demo3" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#demo3" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#demo3" data-bs-slide-to="5"></button>
+      </div>
+      
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="coffee.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>커피</h3>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="bread.jpg" alt="Chicago" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>빵</h3>
+          </div> 
+        </div>
+        <div class="carousel-item">
+          <img src="donut.jpg" alt="New York" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>도넛</h3>
+          </div>  
+        </div>
+        <div class="carousel-item">
+          <img src="noodle.jpg" alt="New York" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>막국수</h3>
+          </div>  
+        </div>
+        <div class="carousel-item">
+          <img src="spicynoodle.png" alt="New York" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>비빔국수</h3>
+          </div>  
+        </div>
+        <div class="carousel-item">
+          <img src="tomato.jpg" alt="New York" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>토마토계란볶음</h3>
+          </div>  
+        </div>
+      </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo3" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo3" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+  </div>
+</body>
+</html>

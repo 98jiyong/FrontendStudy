@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>내가 가봤던 곳</title>
+    <style>
+       * { font-family: 'Noto Sans KR', sans-serif; }
+    </style>
+</head>
+<body>
+  <div>
+    <h1>가봤던 곳</h1><br><hr>
+    <!-- Carousel -->
+    <div id="demo1" class="carousel slide" data-bs-ride="carousel">
+
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo1" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo1" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo1" data-bs-slide-to="2"></button>
+      </div>
+      
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="japan.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>Japan</h3>
+            <p>처음으로 해외여행 가본 곳</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="busan.jpg" alt="Chicago" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>Busan</h3>
+            <p>바다와 여자가 정말 이쁜 곳</p>
+          </div> 
+        </div>
+        <div class="carousel-item">
+          <img src="gapyeong.jpg" alt="New York" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>Gapyeong</h3>
+            <p>빠지하러 놀러가기 좋은 곳</p>
+          </div>  
+        </div>
+      </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo1" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+  </div>
+  <div>
+    <h1 class="mt-5">내가 가보고 싶은 곳</h1><br>
+    <!-- Carousel -->
+    <div id="demo2" class="carousel slide" data-bs-ride="carousel">
+
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo2" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo2" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo2" data-bs-slide-to="2"></button>
+      </div>
+      
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="sapporo.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>Sapporo</h3>
+            <p>겨울에 눈이 얼마나 오는지 궁금해서</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="italy.jpg" alt="Chicago" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>Italy</h3>
+            <p>커피의 고장 커피 왕창 마시기</p>
+          </div> 
+        </div>
+        <div class="carousel-item">
+          <img src="vietnam.jpg" alt="New York" class="d-block" style="width:100%">
+          <div class="carousel-caption">
+            <h3>베트남</h3>
+            <p>저렴하게 다녀올 수 있는 휴양지</p>
+          </div>  
+        </div>
+      </div>
+      <!-- Left and right controls/icons -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#demo2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#demo2" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+
+    </div>
+  </div>
+
+</body>
+</html>
