@@ -8,6 +8,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/9b855eea51.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(() => {
+      const editLine = $('<div></div>');
+      const editSpan = $('<input type="text"></input>').attr('placeHolder', '한줄로 작성하세요')
+      .attr('id', 'myInput').addClass('mt-2');
+      const button = $('<button>확인</button>').attr('id','myButton')
+      .addClass('btn btn-sm btn-primary ms-1 mb-1');
+
+      editLine.append(editSpan);
+      editLine.append(button);
+      $('#anker1').on('click', () => {
+        $('#anker1').append(editLine);
+      });
+      $('#myInput').on('click', ()=>{
+        const userInput = prompt('값을 입력하세요.');
+        editLine.val(userInput);
+      });
+    });
+  </script>
   <style>
     * { font-family: 'Noto Sans KR', sans-serif; }
     a { text-decoration: none; }
@@ -52,8 +72,8 @@
         <div class="sticky">
           <img src="profile.jpg" alt="아바타" class="rounded-circle" style="width: 80%;">
           <div class="mt-2">
-            <span>안 되면 되는것부터 하자.</span>
-            <a href="#"><span class="badge bg-secondary">수정</span></a>
+            <span id="span1">안 되면 되는것부터 하자.</span>
+            <a href="#" id="anker1"><span class="badge bg-secondary">수정</span></a>
           </div>
           <div class="mt-5">
             <i class="fa-solid fa-envelope"></i> 98jiyong@gmail.com<br>
