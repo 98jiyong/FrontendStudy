@@ -11,6 +11,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script>
     $(document).ready(() => {
+
       const editLine = $('<div></div>');
       const editSpan = $('<input type="text"></input>').attr('placeHolder', '한줄로 작성하세요')
       .attr('id', 'myInput').addClass('mt-2');
@@ -19,12 +20,28 @@
 
       editLine.append(editSpan);
       editLine.append(button);
+      $('#anker1').append(editLine);
+      editLine.hide();
+
       $('#anker1').on('click', () => {
-        $('#anker1').append(editLine);
+        editLine.show();
+        editSpan.focus();
       });
-      $('#myInput').on('click', ()=>{
-        const userInput = prompt('값을 입력하세요.');
-        editLine.val(userInput);
+
+      button.on('click', () => {
+        $('#span1').html($('#myInput').val());
+        editLine.fadeToggle();
+      });
+      
+      $('#myInput').on('keyup', e => {
+        if(e.key === 'Enter'){
+          $('#span1').html($('#myInput').val());
+          editLine.fadeToggle();
+        }
+      });
+
+      $('#btnYes').on('click',() => {
+        $('#login').html('게스트님 환영합니다.');
       });
     });
   </script>
@@ -32,7 +49,6 @@
     * { font-family: 'Noto Sans KR', sans-serif; }
     a { text-decoration: none; }
     .sticky {
-    position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 80px;
 }
@@ -52,16 +68,16 @@
           <a class="nav-link" href="project01.go.html" target="iframe_test"><i class="fa-solid fa-plane me-2"></i>가봤던 곳 & 가보고 싶은 곳</a>
         </li>
         <li class="nav-item ms-3">
-          <a class="nav-link" href="project01.favfood.html" target="iframe_test"><i class="fa-solid fa-utensils me-2"></i>좋아하는 음식</a>
+          <a class="nav-link" href="project01.favfood.html" target="iframe_test"><i class="fa-solid fa-utensils me-2"></i>먹고 싶은 것</a>
         </li>
         <li class="nav-item ms-3">
-          <a class="nav-link" href="project01.favhobby.html" target="iframe_test"><i class="fa-solid fa-puzzle-piece me-2"></i>좋아하는 취미</a>
+          <a class="nav-link" href="project01.favhobby.html" target="iframe_test"><i class="fa-solid fa-puzzle-piece me-2"></i>하고 싶은 것</a>
         </li>
         <li class="nav-item ms-3">
           <a class="nav-link" href="#logout" data-bs-toggle="modal"><i class="fa-solid fa-right-from-bracket me-2"></i> 로그아웃</a>
         </li>
       </ul>
-      <span class="navbar-text me-3 pb-3">정지용님 환영합니다.</span>
+      <span id="login" class="navbar-text me-3 pb-3">정지용님 환영합니다.</span>
     </div>
   </nav>
 
@@ -113,7 +129,7 @@
           Are you sure you want to log out?
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+          <button type="submit" id="btnYes" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
           <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">No</button>
         </div>
       </div>

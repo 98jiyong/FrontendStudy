@@ -26,7 +26,7 @@
               fetch(kakaoUrl, { headers: header })
                 .then(response => response.json())
                 .then(result => {
-                  // console.log(result);
+                  console.log(result);
                   let lat = result.documents[0].y;
                   let lon = result.documents[0].x;
                   document.getElementById('lat').innerHTML = lat;

@@ -1,46 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>내가 태어난 곳 </title>
-    <style>
-      * { font-family: 'Noto Sans KR', sans-serif; }
-        div { 
-            font-size: 18px;
-        }
-    </style>
-    </head>
-    <body>
-    <h1>태어난 곳</h1><br><hr>
-    <div>
-        <img src="suwon.png" alt="picture" width="400px" height="500px" style="float: right; margin-left: 20px;">
-        <div>
-          수원시(水原市)는 대한민국 경기도 중남부에 있는 특례시이자 경기도청 소재지이다. 동쪽으로는 용인시, 서쪽으로는 안산시, 남쪽으로는 화성시, 북쪽으로 의왕시와 접한다. 시청 소재지는 팔달구 인계동이며, 장안구, 권선구, 팔달구, 영통구의 4개 일반구가 설치되어 있다. 2022년 1월 13일 창원시, 용인시, 고양시와 함께 특례시가 되었다. 대한민국의 기초지방자치단체 중 인구가 가장 많다.
-        </div><br>
-        <div>
-          수원시는 경기도 중남부에 위치하고 있으며, 동쪽은 용인시 기흥구 및 수지구에, 서쪽은 안산시 상록구와 화성시 봉담읍 및 매송면에, 남쪽은 화성시 병점 및 동탄에, 북쪽은 의왕시에 접하고 있다.
-        </div>
-        <div>
-          경부고속도로, 영동고속도로, 용인서울고속도로가 분기하고 있으며, 경기도 남부의 교통중심지로, 인천과 여주로 통하는 육로의 기점이 된다.
-        </div>
-        <div>
-          수원시의 면적은 121.04 km<sup>2</sup>의 주형 분지로 되어 있다.
-        </div>
-        <div>
-          시가지 중앙에는 해발 143m의 팔달산이 있어 공원을 이루며, 유네스코 세계문화유산 수원화성 성곽이 둘러져 있으며 동북공심돈, 사대문, 봉수대, 방화수류정 등 문화재가 곳곳에 있다.
-        </div>
-        <div>
-          시 외곽 북쪽으로는 백운산과 광교산이 위치해 있어 높은 구릉지역을 형성하며, 서쪽 외곽에는 칠보산 위치해 있어 낮은 구릉지를 이룬다.          
-        </div>
-        <div>
-          수원 중심부와 동남 지역으로 평야를 형성되어서, 도시의 시가지 형성 및 수도권 근교의 농산, 원예 등에 도움이 되고 있다.
-        </div>
-        </div>
-        
-    </div>
-    </body>
-    </html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="../API/key.js"></script> -->
+<title>내가 태어난 곳 </title>
+<style>
+  * { font-family: 'Noto Sans KR', sans-serif; }
+  div { font-size: 18px;}
+  a {text-decoration: none;}
+  span {
+    padding-left: 55px;
+  }
+</style>
+<script>
+  window.onload = () => {
+    const kakaoScript = document.createElement('script');
+    kakaoScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=f7e15819b6b613169bb17fe794b2deb7&autoload=false`;
+    kakaoScript.onload = () => {
+      kakao.maps.load(() => { });
+    };
+    document.head.appendChild(kakaoScript);
+
+    let place = '수원';
+    let roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+    let kakaoBaseUrl = 'https://dapi.kakao.com/v2/local/search/address.json';
+    let params1 = 'currentPage=1&countPerPage=5';
+    let params2 = `keyword=${encodeURIComponent(place)}`;
+    let params3 = `confmKey=devU01TX0FVVEgyMDI0MDcyOTExMTM0OTExNDk2ODY=&resultType=json`;
+    let roadUrl = `${roadBaseUrl}?${params1}&${params2}&${params3}`;
+
+    fetch(roadUrl)
+      .then(response => response.json())
+      .then(result => {
+        let roadAddr = result.results.juso[0].roadAddr;
+
+        let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`;
+        let header = { Authorization: `KakaoAK e49c6edab735f3fd1a69cfa1b787f87a` };   
+        fetch(kakaoUrl, { headers: header })
+          .then(response => response.json())
+          .then(result => {
+            let lat = parseFloat(result.documents[0].y);
+            let lon = parseFloat(result.documents[0].x);
+
+            drawMap(place, lat, lon);
+          })
+          .catch(error => {
+            console.log(error);
+          }); 
+      });
+  };
+
+  function drawMap(place, lat, lon) {
+    let container = document.getElementById('map');
+    let position = new kakao.maps.LatLng(lat, lon);
+    let options = { 
+        center: position, 
+        level: 10 
+    };
+    let map = new kakao.maps.Map(container, options); 
+
+    let marker = new kakao.maps.Marker({
+      map: map,
+      position: position,      
+    });
+    let infowindow = new kakao.maps.InfoWindow({
+      content : `<span class="infoWindow">${place}</span><br>
+      <a href="https://map.kakao.com/link/map/${place},${lat},${lon}" style="color:#0e6afe" target="_blank">큰지도보기</a>
+      <a href="https://map.kakao.com/link/to/${place},${lat},${lon}" style="color:#0e6afe" target="_blank">&nbsp;&nbsp;길찾기</a>`
+    });
+    infowindow.open(map, marker);  
+  }
+</script>
+</head>
+<body>
+  <h1>태어난 곳</h1><br><hr>
+  <div>
+    <div id="map" style="width:400px; height:400px; float: right; margin-left: 20px;"></div>
+      <div>
+        수원시(水原市)는 대한민국 경기도 중남부에 있는 특례시이자 경기도청 소재지이다. 동쪽으로는 용인시, 서쪽으로는 안산시, 남쪽으로는 화성시, 북쪽으로 의왕시와 접한다. 시청 소재지는 팔달구 인계동이며, 장안구, 권선구, 팔달구, 영통구의 4개 일반구가 설치되어 있다. 2022년 1월 13일 창원시, 용인시, 고양시와 함께 특례시가 되었다. 대한민국의 기초지방자치단체 중 인구가 가장 많다.
+      </div><br>
+      <div>
+        수원시는 경기도 중남부에 위치하고 있으며, 동쪽은 용인시 기흥구 및 수지구에, 서쪽은 안산시 상록구와 화성시 봉담읍 및 매송면에, 남쪽은 화성시 병점 및 동탄에, 북쪽은 의왕시에 접하고 있다.
+      </div>
+      <div>
+        경부고속도로, 영동고속도로, 용인서울고속도로가 분기하고 있으며, 경기도 남부의 교통중심지로, 인천과 여주로 통하는 육로의 기점이 된다.
+      </div>
+      <div>
+        수원시의 면적은 121.04 km<sup>2</sup>의 주형 분지로 되어 있다.
+      </div>
+      <div>
+        시가지 중앙에는 해발 143m의 팔달산이 있어 공원을 이루며, 유네스코 세계문화유산 수원화성 성곽이 둘러져 있으며 동북공심돈, 사대문, 봉수대, 방화수류정 등 문화재가 곳곳에 있다.
+      </div>
+      <div>
+        시 외곽 북쪽으로는 백운산과 광교산이 위치해 있어 높은 구릉지역을 형성하며, 서쪽 외곽에는 칠보산 위치해 있어 낮은 구릉지를 이룬다.          
+      </div>
+      <div>
+        수원 중심부와 동남 지역으로 평야를 형성되어서, 도시의 시가지 형성 및 수도권 근교의 농산, 원예 등에 도움이 되고 있다.
+      </div>
+      </div>
+      
+  </div>
+</body>
+</html>
