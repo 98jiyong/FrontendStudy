@@ -47,7 +47,7 @@
                         }); 
                 });
             fetch(`https://api.openweathermap.org/data/2.5/weahter?
-            lat=${lat}&lon=${lon}&appid=487c7e5bcede771794e1808e584e98ce`)
+            lat=${lat}&lon=${lon}&appid=${weatherApiKey}`)
             .then(response => response.json())
             .then(json => {
               console.log(json);
