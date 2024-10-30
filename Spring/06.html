@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    width: 1280px; height: 1024px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 0px;
+  }
+  header {
+    /* display: inline-block; */
+    float: left;
+    width: 100%; height: 15%;
+    border: 1px solid black;
+    padding-top: 20px;
+    box-sizing: border-box;
+    /* text-align: center;
+    font-size: 30px;
+    align-content: center; */
+    /* background-color: salmon; */
+  }
+  .header_01 {
+    width: 1000px; height: 30px;
+    /* border: 1px solid black; */
+    text-align: center;
+    margin: 20px auto; /* 가운데 정렬 의미 */
+  }
+  .header_01 h1{
+    display: inline;
+  }
+  nav {
+    /* display: inline-block; */
+    float: left;
+    width: 100%; height: 5%;
+    border: 1px solid black;
+    box-sizing : border-box;
+    /* text-align: center;
+    font-size: 30px;
+    align-content: center; */
+    /* background-color: sandybrown; */
+  }
+  section {
+    /* display: inline-block; */
+    float: left;
+    width: 70%; height: 40%;
+    border: 1px solid black;
+    box-sizing : border-box;
+    /* text-align: center;
+    font-size: 30px;
+    align-content: center; */
+    /* background-color: sienna; */
+    /* float: left; */
+  }
+  section div img {
+    display: block;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+  aside {
+    /* display: inline-block; */
+    width: 30%; height: 40%;
+    border: 1px solid black;
+    box-sizing : border-box;
+    float: left;
+    /* text-align: center;
+    font-size: 30px;
+    align-content: center; */
+    /* background-color: olive; */
+  }
+  footer {
+    /* display: inline-block; */
+    float: left;
+    width: 100%; height: 10%;
+    border: 1px solid black;
+    box-sizing : border-box;
+    text-align: center;
+    font-size: 30px;
+    align-content: center;
+    /* background-color: aquamarine; */
+  }
+  nav ul li {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+  }
+  nav ul li:hover {
+    color: red;
+  }
+  nav ul {
+    text-align: center;
+    margin-top: 10px;
+  }
+  #display {
+    display: flex;
+    width: 100%; height: 30%;
+    border: 1px solid black;
+    box-sizing : border-box;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .display_01 {
+    display: inline-block;
+    width: 250px; height: 150px;
+    border: 1px solid;
+    margin: 0px auto;
+  }
+  div ul li{
+    display: block;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+  }
+</style>
+<body>
+  <!-- <div id="header"></div> -->
+  <header>
+    <div class="header_01">
+      <h1>★★★★★★★★★★★★</h1>
+    </div>
+    <div class="header_01">
+      <form action="" method="">
+        <input type="text" name="" id="" size="50" placeholder="검색어를 입력해주세요.">
+        <input type="submit" value="search">
+      </form>
+    </div>
+  </header> <!-- 시멘틱 태그 -->
+  <nav>
+    <ul>
+      <li><span>홈으로</span></li>
+      <li><span>HTML</span></li>
+      <li><span>CSS</span></li>
+      <li><span>JS</span></li>
+    </ul>
+  </nav>
+  <section>
+    <div>
+      <img src="https://picsum.photos/600/300" alt="picsum photos" width="600" height="300">
+    </div>
+  </section>
+  <aside>
+    <form action="" method="">
+      <table>
+        <tr>
+          <th colspan="3">어서오세요</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </table>
+    </form>
+  </aside>
+  <div id="display">
+    <div>
+      <ul>
+        <li>
+          <div class="display_01">
+            <h3>자장면</h3><hr>
+            <p>자장면은 맛있다.</p>
+          </div>
+        </li>
+        <li>
+          <div class="display_01">
+            <h3>짬뽕</h3><hr>
+            <p>짬뽕은 맵다.</p>
+          </div>
+        </li>
+        <li>  
+          <div class="display_01">
+            <h3>볶음밥</h3><hr>
+            <p>볶음밥은 꼬슬꼬슬하다.</p>
+          </div>
+        </li>
+        <li>
+          <div class="display_01">
+            <h3>탕수육</h3><hr>
+            <p>탕수육은 찍먹이다.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <footer>Copyright 2024. Jiyong all rights reserved.</footer>
+</body>
+</html>
