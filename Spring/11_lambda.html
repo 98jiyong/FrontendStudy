@@ -13,20 +13,18 @@
     코드의 재사용성 보다, 간단한 기능 정의-->
   <!-- 이벤트 등록, 이벤트 처리 시
   일반적으로 람다식을 많이 사용한다.-->
-  <h1>오늘의 메뉴</h1>
+  <h1><mark>오늘의 메뉴</mark></h1>
   <input type="button" value="버튼 1" onclick="menu()">
   <input type="button" value="버튼 2">
   <input type="text">
-  <h1></h1>
 </body>
 <script>
   // 계산기에서 모든 버튼은 이벤트에 등록되어야 한다.
   // html에서 onclick을 하던, 자바스크립트에서 리스너 등록을 해야한다.
   // 이번 예제는 자바스크립트에서 리스너를 등록하겠습니다.
   function menu(){
-    document.getElementsByTagName('h1')[1].innerHTML 
-    += 
-    document.getElementsByTagName('input')[2].value + '<br>';
+    document.getElementsByTagName('h1')[0].innerHTML = 
+    document.getElementsByTagName('input')[2].value;
   }
   document.getElementsByTagName('input')[1].addEventListener('click', 
   () => {alert('수고하셨습니다.')});
