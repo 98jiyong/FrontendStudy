@@ -1,0 +1,51 @@
+html { 
+  scroll-behavior: smooth; 
+} 
+/* body */
+body {
+  /* width: 1280px; height: 2080px; */
+  padding-top: 150px;
+  background-color: #1cda0b;
+  margin: 0px;
+}
+body::-webkit-scrollbar {
+display: none;
+}
+
+/* header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 45px 60px;
+  background-color: white;
+  color: #58bb5d;
+  font-size: 18px;
+  border: 1px solid #9fd8a2;
+  z-index: 10;
+}
+header span h1 {
+  display: inline-block;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+/* nav */
+nav {
+  margin-left: 300px;
+  display: inline-block;
+  font-size: 20px;
+}
+nav ul li {
+  display: block;
+  float: left;
+  margin-left: 60px;
+}
+nav ul li a {
+  text-decoration-line: none;
+  color: #7bd481;
+}
+a:hover {
+  color: #48854c;
+}

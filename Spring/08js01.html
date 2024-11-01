@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Javascript Test</h1>
+  <h3>javascript 정리 순서</h3>
+  <ul>
+    <li>선원 키워드 : var, let, const</li>
+    <li>연산자 : 비교연산자 중 == 그리고 ===</li>
+    <li>html tag의 DOM</li>
+    <li>자바스크립트에서 html 객체 가져오기</li>
+    <li>객체 동적 컨트롤하기</li>
+  </ul>
+  <form action="goServer" method="get">
+    <input type="text" id="id"><br>
+    <input type="text" id="name"><br>
+    <input type="submit" value="전송">
+    <input type="button" value="클릭" onclick="test()">
+  </form>
+</body>
+<script>
+  function test(){ //자바스크립트 함수 정의
+    // 정의시 매개변수 고려, 리턴값을 정의하지 않음
+    alert("클릭됨")
+    var a = document.getElementById('id').value
+    var b = document.querySelector('#name').value
+    var c = document.getElementsByTagName('h1')[0]
+    c.innerText = a + b
+  }
+  
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="" id="signup">
+    <table>
+      <tr>
+        <td><label for="id">ID : </label></td>
+        <td><input type="text" name="" id="id"></td>
+      </tr>
+      <tr>
+        <td><label for="pw">PW : </label></td>
+        <td><input type="password" name="" id="pw"></td>
+      </tr>
+      <tr style="text-align: end;">
+        <td colspan="2">
+          <input type="reset" value="초기화">
+          <input type="button" value="회원가입" onclick="check()">
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+<script>
+  function check(){
+    var id = document.querySelector('#id').value
+    var pw = document.querySelector('#pw').value
+    if(id.length < 8){
+      alert("ID입력 양식(8글자 이상)")
+    }
+    else if(pw.length < 4){
+      alert("PW입력 양식(4글자 이상)")
+    }else{
+      alert("회원가입 성공 !")
+      document.querySelector('#signup').reset();
+    }
+  }
+</script>
+</html>

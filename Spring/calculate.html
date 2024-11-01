@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form {
+      width: 400px; height: 400px;
+      margin-top: 50px;
+      margin-left: 400px;
+    }
+    table{
+      text-align: center;
+    }
+    td {
+      margin: 0px;
+      padding: 0px;
+    }
+    td input {
+      width: 70px; height: 70px;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div><h1>계산결과는</h1></div>
+  <div><h1 id="result"></h1></div>
+  <div><h1>입니다.</h1></div>
+  <form>
+    <table>
+      <tr>
+        <td colspan="4"><input type="text" value="" style="width: 280px;" id="input"></td>
+      </tr>
+      <tr>
+        <td style="height:40px;"> </td>
+      </tr>
+      <tr>
+        <td><input type="button" value="1" onclick="btnClick(value)"></td>
+        <td><input type="button" value="2" onclick="btnClick(value)"></td>
+        <td><input type="button" value="3" onclick="btnClick(value)"></td>
+        <td><input type="button" value="+" onclick="btnClick(value)"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="4" onclick="btnClick(value)"></td>
+        <td><input type="button" value="5" onclick="btnClick(value)"></td>
+        <td><input type="button" value="6" onclick="btnClick(value)"></td>
+        <td><input type="button" value="-" onclick="btnClick(value)"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="7" onclick="btnClick(value)"></td>
+        <td><input type="button" value="8" onclick="btnClick(value)"></td>
+        <td><input type="button" value="9" onclick="btnClick(value)"></td>
+        <td><input type="button" value="*" onclick="btnClick(value)"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="button" value="0" style="width: 142px;" 
+          onclick="btnClick(value)"></td>
+        <td><input type="button" value="." onclick="btnClick(value)"></td>
+        <td><input type="button" value="/" onclick="btnClick(value)"></td>
+      </tr>
+      <tr>
+        <td colspan="4"><input type="button" value="계산" style="width: 287px;" onclick="run()"></td>
+      </tr>
+    </table>
+  </form>
+</body>
+<script>
+  function run(){
+    const a = document.querySelector('#result');
+    var input = document.querySelector('#input');
+    var rs = eval(input.value)
+    a.innerText = rs;
+  }
+  function btnClick(val){
+    var input = document.querySelector('#input');
+    input.value += val
+  }
+</script>
+</html>
