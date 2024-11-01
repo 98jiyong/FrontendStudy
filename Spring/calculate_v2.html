@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 100px;
+    }
+    h1 {
+      margin-left: 5px;
+      width: 185px; height: 40px;
+      border: 1px solid brown;
+    }
+    .btn {
+      display: inline-block;
+      width: 50px; height: 50px;
+      background-color: wheat;
+      border: 1px solid brown;
+      margin: 5px;
+      text-align: center;
+      align-content: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>&nbsp;</h1>
+  <div class="btn num">1</div>
+  <div class="btn num">2</div>
+  <div class="btn num">3</div><br>
+  <div class="btn num">4</div>
+  <div class="btn num">5</div>
+  <div class="btn num">6</div><br>
+  <div class="btn num">7</div>
+  <div class="btn num">8</div>
+  <div class="btn num">9</div><br>
+  <div class="btn cal">C</div>
+  <div class="btn num">0</div>
+  <div class="btn">=</div>  
+</body>
+<script>
+  function prt(num){
+    document.getElementsByTagName('h1')[0].innerText += num;
+  }
+  let a = document.getElementsByClassName('num');
+  for(let i=0; i < a.length; i++){
+    let s = a[i].innerText;
+    a[i].addEventListener('click', () => {prt(s)})
+  }
+  let b = document.getElementsByClassName('cal')[0];
+  b.addEventListener('click', () => {document.getElementsByTagName('h1')[0].innerHTML = '\&nbsp'})
+</script>
+</html>
