@@ -250,8 +250,35 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 
+    $('#allChk').click(function(){
+      let checkbox = $('#cart__list tr td input:checkbox:checked');
+  
+      checkbox.each(function(i) {
+        let tr = checkbox.parent().parent().eq(i);
+        let td = tr.children();
+    
+        let cnt = Number(td.eq(2).text());
+        let price = Number(td.eq(3).text());
+        let dlv = Number(td.eq(4).text());
+        let totalPri = 0;
+        let totalDlv = 0;
+        let total = 0;
+
+        totalPri += (cnt * price);
+        totalDlv += dlv;
+        total += (totalPri + totalDlv);
+        $('#allPri').text(total);
+      });
+
+    });
+
+
+    
+
+
+  
   function allChk1(){
-    alert($('#cart__list').children().length);
+    // alert($('#cart__list').children().length);
     // alert($('#cart__list').find("input").is(":checked"));
     // alert($('#cart__list').children().siblings().html());
     if($('#allChk').is(":checked")){
@@ -259,7 +286,7 @@
     }else{
       $('input:checkbox').prop('checked', false);
     }
-
+    alert(total);
   }
   
   function delRow(){
@@ -271,13 +298,13 @@
     }else{
       $('#hidden').hide();
     }
+    $('#allChk').prop('checked', false);
   }
 
   // 추가할 값
   // 체크박스, 상품정보, 옵션, 상품금액, 배송비
   function addRow(){
     $('#hidden').hide();
-  
     var goodsInfo = $('#goodsInfo').val();
     var goodsCnt =  $('#goodsCnt').val();
     var goodsPrice = $('#goodsPrice').val();
