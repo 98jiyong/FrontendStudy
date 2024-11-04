@@ -263,14 +263,9 @@
   }
   
   function delRow(){
-    let t = $('#cart__list tr');
-    for(let i=0; i<t.length; i++){
-      let tt = t.get(i);
-      alert($(tt).children().val().is(":checked"));
-      alert(tt.html());
-      alert($('#cart__list tr').children());
-    }
-
+    let checkbox = $('#cart__list tr td input:checkbox:checked');
+    let tr = checkbox.parent().parent();
+    tr.remove();
     if($('#cart__list').children().length == 0){
       $('#hidden').show();  
     }else{
