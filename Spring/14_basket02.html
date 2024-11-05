@@ -249,33 +249,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
-
-    $('#allChk').click(function(){
-      let checkbox = $('#cart__list tr td input:checkbox:checked');
-  
-      checkbox.each(function(i) {
-        let tr = checkbox.parent().parent().eq(i);
-        let td = tr.children();
-    
-        let cnt = Number(td.eq(2).text());
-        let price = Number(td.eq(3).text());
-        let dlv = Number(td.eq(4).text());
-        let totalPri = 0;
-        let totalDlv = 0;
-        let total = 0;
-
-        totalPri += (cnt * price);
-        totalDlv += dlv;
-        total += (totalPri + totalDlv);
-        $('#allPri').text(total);
-      });
-
-    });
-
-
-    
-
-
   
   function allChk1(){
     // alert($('#cart__list').children().length);
@@ -286,39 +259,62 @@
     }else{
       $('input:checkbox').prop('checked', false);
     }
-    alert(total);
   }
   
   function delRow(){
-    let checkbox = $('#cart__list tr td input:checkbox:checked');
-    let tr = checkbox.parent().parent();
-    tr.remove();
+    let list = $('#cart__list').children();
+    alert(list.length)
+    for(let i=0; i<list.length; i++){
+      let tr = $('#cart__list>tr').eq(i);
+      alert(tr);
+      let td = tr.children().eq(i);
+      tr.remove();
+      i--;
+    }
     if($('#cart__list').children().length == 0){
       $('#hidden').show();  
     }else{
       $('#hidden').hide();
     }
     $('#allChk').prop('checked', false);
+    
   }
 
-  // 추가할 값
-  // 체크박스, 상품정보, 옵션, 상품금액, 배송비
   function addRow(){
     $('#hidden').hide();
+    var html = '';
     var goodsInfo = $('#goodsInfo').val();
     var goodsCnt =  $('#goodsCnt').val();
     var goodsPrice = $('#goodsPrice').val();
     var goodsDlv = $('#goodsDlv').val();
-    var html = '';
     alert(goodsInfo + " / " + goodsCnt + " / " + goodsPrice + " / " + goodsDlv);
     html = "<tr>";
     html += "<td><input type=\"checkbox\"></td>";
     html += "<td>"+goodsInfo+"</td>";
-    html += "<td>"+goodsCnt+"</td>";
-    html += "<td>"+goodsPrice+"</td>";
-    html += "<td>"+goodsDlv+"</td>";
+    html += "<td>"+goodsCnt+"개</td>";
+    html += "<td>"+goodsPrice+"원</td>";
+    html += "<td>"+goodsDlv+"원</td>";
     html += "</tr>";
     $('#cart__list').append(html);
+    updatePri(goodsCnt,goodsPrice,goodsDlv,true);
+  }
+
+  let totalPri = 0;
+  let totalDlv = 0;
+  let total = 0;
+
+  function updatePri(goodsCnt, goodsPrice, goodsDlv, flag){
+    if(flag){
+      totalPri += Number(goodsCnt) * Number(goodsPrice);
+      totalDlv += Number(goodsDlv);
+    }else{
+      totalPri -= Number(goodsCnt) * Number(goodsPrice);
+      totalDlv -= Number(goodsDlv);
+    }
+    total = totalPri + totalDlv;
+    $('#allGoods').text(totalPri);
+    $('#allDlv').text(totalDlv);
+    $('#allPri').text(total);
   }
 
 
