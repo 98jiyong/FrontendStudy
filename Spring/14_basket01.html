@@ -48,7 +48,7 @@
     }
 
     .cart ul :first-child {
-      color: limegreen;
+      color: #03C75A;
     }
 
     table {
@@ -130,7 +130,7 @@
     }
 
     .cart__list__detail :nth-child(5) button {
-      background-color: limegreen;
+      background-color: #03C75A;
       color: white;
       border: none;
       border-radius: 5px;
@@ -165,7 +165,7 @@
     }
 
     .cart__bigorderbtn.right {
-      background-color: limegreen;
+      background-color: #03C75A;
       color: white;
       border: none;
     }
@@ -208,8 +208,8 @@
               <button class="cart__list__optionbtn">선택상품 찜</button>
             </td>
             <td></td>
-            <td style="text-align: center;"> 선택상품금액   <span id="allGoods"></span> + 총 배송비   <span id="allDlv"></span></td>
-            <td style="text-align: center; color: limegreen; border-left: 1px lightgray solid;"> 주문금액 <span id="allPri"></span></td>
+            <td style="text-align: center;"> 상품금액   <span id="allGoods"></span> + 총 배송비   <span id="allDlv"></span></td>
+            <td style="text-align: center; color: #03C75A; border-left: 1px lightgray solid;"> 주문금액 <span id="allPri"></span></td>
           </tr>
         </tfoot>
       </form>
@@ -264,20 +264,34 @@
     // 단위테스트 -> (상품정보 / 수량 / 금액 / 배송비 출력)
     // alert(goodsInfo + " / " + goodsCnt + " / " + goodsPrice + " / " + goodsDlv);
 		// html을 추가하면서 작성
-    html += "<tr>";
-    html += "<td><input type=\"checkbox\">";
-		html += "<td>"+goodsInfo+"</td>";
-		html += "<td>"+goodsCnt+"개</td>";
-		html += "<td>"+goodsPrice+"원</td>";
-		html += "<td>"+goodsDlv+"원</td>";
-		html += "</tr>";
-		document.getElementById('cart__list').innerHTML += html;
-		updatePri(goodsCnt,goodsPrice,goodsDlv,true);
-		// 입력필드 초기화
-		document.getElementById('goodsInfo').value = " ";
-		document.getElementById('goodsCnt').value = 1;
-		document.getElementById('goodsPrice').value = " ";
-		document.getElementById('goodsDlv').value = " ";
+    if(goodsInfo == ""){
+      alert("상품 정보를 입력해주세요.");
+    }else if(goodsPrice == ""){
+      alert("상품 금액을 입력해주세요.");
+    }else if(goodsDlv == ""){
+      alert("배송비를 입력해주세요.")
+    }else{
+      let check = confirm("등록하시겠습니까?\n")
+      if(check){
+        alert("등록 완료.")
+        html += "<tr>";
+        html += "<td><input type=\"checkbox\" onchange=\"synch()\">";
+        html += "<td>"+goodsInfo+"</td>";
+        html += "<td>"+goodsCnt+"개</td>";
+        html += "<td>"+goodsPrice+"원</td>";
+        html += "<td>"+goodsDlv+"원</td>";
+        html += "</tr>";
+        document.getElementById('cart__list').innerHTML += html;
+        // updatePri(goodsCnt,goodsPrice,goodsDlv,true);
+        // 입력필드 초기화
+        document.getElementById('goodsInfo').value = "";
+        document.getElementById('goodsCnt').value = 1;
+        document.getElementById('goodsPrice').value = "";
+        document.getElementById('goodsDlv').value = "";
+      }else{
+        alert("등록 취소.")
+      }
+    }
 		// 대상을 안보이게
 		empty();
   }
@@ -328,6 +342,30 @@
 		document.getElementById('allPri').innerText = String(total)+"원";
 	}
 
+  function synch(){
+    let list = document.getElementById('cart__list').children;
+    let count = 0;
+    for(let i=0; i<list.length; i++){	
+			let tr = document.getElementById('cart__list').children[i];
+			let td = tr.children[0];
+			let chkbx = td.firstChild;
+      let cnt = tr.children[2].innerText.substring(0, tr.children[2].innerText.indexOf("개",0));
+      let price = tr.children[3].innerText.substring(0, tr.children[3].innerText.indexOf("원",0));
+      let dlv = tr.children[4].innerText.substring(0, tr.children[4].innerText.indexOf("원",0));
+			if(chkbx.checked){
+        updatePri(cnt,price,dlv,true);
+				count++;
+			}else{
+        updatePri(cnt,price,dlv,false);
+      }
+      if(list.length == count){
+        document.getElementById('allChk').checked = true;
+      }else{
+        document.getElementById('allChk').checked = false;
+      }
+      
+		}
+  }
 	function allChk1(){
 		let chkFlag = document.getElementById('allChk').checked;
 		let chkArray = document.getElementsByTagName('input');
@@ -342,7 +380,6 @@
 			}
 		}
 	}
-
 
 
 	
